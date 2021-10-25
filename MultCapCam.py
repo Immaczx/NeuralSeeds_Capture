@@ -13,29 +13,19 @@ from picamera import PiCamera
 import time as time
 
 
-flags.DEFINE_string('File',"./home/pi/Desktop/",'File make o extis path')
-flags.DEFINE_string('Path',None,'Path to save images')
+flags.DEFINE_string('Path',"/home/pi/Desktop/test",'Path make o extis path')
 flags.DEFINE_integer('Step',60,'Time inter each capture')
 flags.DEFINE_integer('Duration',300,'Duration all capture proces')
 
 def main(_argv):
     
-    File = FLAGS.File
-    results_path = FLAGS.Path.strip('/')
+    path = FLAGS.Path
     
-    if not FLAGS.Path:
-        try:
-            os.mkdir(File + '/test')
-        except OSError as e:
-            if e.errno == errno.EEXIST:
-                pass
-        results_path = '/test'
-    else:
-        try:
-            os.mkdir(File+results_path)
-        except OSError as e:
-            if e.errno == errno.EEXIST:
-                pass
+    try:
+        os.mkdir(path)
+    except OSError as e:
+        if e.errno == errno.EEXIST:
+            pass
 
     Step = FLAGS.Step 
     Duration = FLAGS.Duration
@@ -49,7 +39,7 @@ def main(_argv):
     while(cont<=Final):
         print(time.time(),time.strftime("%d-%m-%Y,%H:%M:%S"))
         time.sleep(2)
-        camera.capture(File+results_path+"/S"+time.strftime("%d-%m-%Y,%H:%M:%S")+".jpg")
+        camera.capture(path+"/S"+time.strftime("%d-%m-%Y,%H:%M:%S")+".jpg")
         camera.stop_preview()
         cont=cont+1
         time.sleep(Step-2)
