@@ -11,10 +11,10 @@ Duracion de la sesión --Duration
 
 Si usamos el comando -h o --help retornara esta descripción:
 
-´´´Usage: MultCapCam.py [options] <Folder> [Step] [Duration]
+```Usage: MultCapCam.py [options] <Folder> [Step] [Duration]
 Options:
   -h --help
   -v                 verbose mode
   --Step <int>       Time inter each capture, use d, h, m for day, hour, minute respectively [default: 10]
   --Duration <int>   Duration all capture proces, use d, h, m for day, hour, minute respectively [default: 50]
-´´´
+```
